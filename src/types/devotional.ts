@@ -29,12 +29,11 @@ export interface DevotionalDay {
 }
 
 export interface DevotionalWeek {
-  id: string; // e.g. 'week-01'
-  weekNumber: number;
-  dateRange?: string; // e.g. '2026 第 36 週'
+  id: string; // Weekly Monday date e.g. '2026-09-07'
+  startDate?: string; // e.g. '2026-09-07'
   title: string; // e.g. '死地中的凱歌'
   book: string; // e.g. '哥林多後書 1:1-11'
-  subtitle: string; // e.g. '六日深度研經靈修手冊'
+  subtitle?: string; // e.g. '六日深度研經靈修手冊'
   goldenVerse: {
     text: string;
     reference: string;

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock, Sparkles, Calendar, BookMarked } from "lucide-react";
 import { DevotionalWeek } from "@/types/devotional";
+import { formatWeekDateRange } from "@/lib/devotional-service";
 import { useIsDayCompleted, toggleDayCompleted } from "@/lib/storage";
 import confetti from "canvas-confetti";
 
@@ -46,7 +47,7 @@ export function TodayHeroCard({ week, recommendedDayId }: TodayHeroCardProps) {
           </span>
           <span className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 font-medium flex items-center gap-1">
             <Calendar className="w-3.5 h-3.5 text-stone-400" />
-            {week.dateRange || "本週材料"}・{currentDay.dayLabel}
+            {formatWeekDateRange(week)}・{currentDay.dayLabel}
           </span>
         </div>
 

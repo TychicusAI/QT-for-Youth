@@ -1,9 +1,8 @@
 import { DevotionalWeek } from "@/types/devotional";
 
-export const week01: DevotionalWeek = {
-  id: "week-01",
-  weekNumber: 1,
-  dateRange: "本週精選特輯",
+export const week_2026_09_07: DevotionalWeek = {
+  id: "2026-09-07",
+  startDate: "2026-09-07",
   title: "死地中的凱歌",
   book: "哥林多後書 1:1-11",
   subtitle: "六日深度研經靈修手冊",
