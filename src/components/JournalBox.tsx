@@ -55,7 +55,7 @@ export function JournalBox({ weekId, dayId, dayTitle }: JournalBoxProps) {
         onChange={handleChange}
         placeholder="在此寫下今天神對你的說話、安靜中的領受、或是寫給天父的真實禱告..."
         rows={4}
-        className="w-full p-3.5 rounded-xl text-sm bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-y leading-relaxed"
+        className="w-full p-3.5 rounded-xl text-base sm:text-sm bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-y leading-relaxed"
       />
     </div>
   );

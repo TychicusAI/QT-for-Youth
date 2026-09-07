@@ -156,7 +156,6 @@ function parseMarkdown(content, fileId) {
       dayNumber: dayInfo.dayNumber,
       dayLabel,
       title: theme,
-      subtitle: `${dayLabel} 深度默想`,
       scriptureRef,
       scriptureVersion,
       scriptureText,

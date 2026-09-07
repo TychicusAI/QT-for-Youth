@@ -33,26 +33,26 @@ export function TodayHeroCard({ week, recommendedDayId }: TodayHeroCardProps) {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500/15 via-orange-500/10 to-amber-100/30 dark:from-amber-950/40 dark:via-slate-900/60 dark:to-slate-950 border border-amber-300/40 dark:border-amber-700/40 p-6 sm:p-8 md:p-10 shadow-xl shadow-amber-500/5 transition-all">
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500/15 via-orange-500/10 to-amber-100/30 dark:from-amber-950/40 dark:via-slate-900/60 dark:to-slate-950 border border-amber-300/40 dark:border-amber-700/40 p-5 sm:p-8 md:p-10 shadow-xl shadow-amber-500/5 transition-all">
       {/* Background ambient glowing orbs */}
       <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-amber-400/20 dark:bg-amber-500/10 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-orange-400/20 dark:bg-orange-500/10 blur-3xl pointer-events-none" />
 
       {/* Top Header Row */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div className="flex items-center gap-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-white shadow-sm shadow-amber-500/30">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-white shadow-sm shadow-amber-500/30">
             <Sparkles className="w-3.5 h-3.5" />
-            今日靈修特推
+            今日特推
           </span>
           <span className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 font-medium flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 text-stone-400" />
+            <Calendar className="w-3.5 h-3.5 text-stone-400 shrink-0" />
             {formatWeekDateRange(week)}・{currentDay.dayLabel}
           </span>
         </div>
 
-        {/* 6-Day quick switcher pill bar */}
-        <div className="flex items-center gap-1 bg-white/70 dark:bg-stone-900/70 p-1 rounded-full border border-amber-200/60 dark:border-stone-800 backdrop-blur-sm text-xs">
+        {/* 6-Day quick switcher pill bar (scrollable on mobile) */}
+        <div className="flex items-center gap-1 bg-white/70 dark:bg-stone-900/70 p-1 rounded-full border border-amber-200/60 dark:border-stone-800 backdrop-blur-sm text-xs max-w-full overflow-x-auto whitespace-nowrap">
           {week.days.map((d) => {
             const isSelected = d.id === selectedDayId;
             return (
@@ -79,7 +79,7 @@ export function TodayHeroCard({ week, recommendedDayId }: TodayHeroCardProps) {
             {currentDay.scriptureRef}（{currentDay.scriptureVersion}）
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight leading-snug">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight leading-snug">
             {currentDay.title}
           </h2>
 

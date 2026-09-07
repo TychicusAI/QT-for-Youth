@@ -111,7 +111,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight leading-tight">
+        <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight leading-snug sm:leading-tight">
           {day.title}
         </h1>
 
@@ -219,13 +219,13 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
       )}
 
       {/* Bottom Navigation: Prev / Next Day */}
-      <footer className="pt-6 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between gap-4">
+      <footer className="pt-6 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between gap-2 sm:gap-4">
         {prevDay ? (
           <Link
             href={`/devotional/${week.id}/${prevDay.id}`}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 hover:border-amber-300 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-900 transition text-xs font-semibold group"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 rounded-xl border border-stone-200 dark:border-stone-800 hover:border-amber-300 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-900 transition text-xs font-semibold group"
           >
-            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform shrink-0" />
             <span>上一日：{prevDay.dayLabel}</span>
           </Link>
         ) : (
@@ -234,7 +234,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
 
         <Link
           href="/"
-          className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline"
+          className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline shrink-0 text-center"
         >
           返回六日目錄
         </Link>
@@ -242,17 +242,17 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
         {nextDay ? (
           <Link
             href={`/devotional/${week.id}/${nextDay.id}`}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white transition text-xs font-semibold group shadow-md shadow-amber-600/20"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white transition text-xs font-semibold group shadow-md shadow-amber-600/20"
           >
             <span>下一日：{nextDay.dayLabel}</span>
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </Link>
         ) : (
           <Link
             href="/"
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition text-xs font-semibold"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition text-xs font-semibold"
           >
-            <CheckCircle2 className="w-4 h-4" />
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
             <span>完成本週全部旅程</span>
           </Link>
         )}

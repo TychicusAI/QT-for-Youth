@@ -9,31 +9,40 @@ interface GreekKeywordsSectionProps {
 }
 
 export function GreekKeywordsSection({ keywords }: GreekKeywordsSectionProps) {
-  const [isOpen, setIsOpen] = useState(true);
+  // Default to collapsed as requested
+  const [isOpen, setIsOpen] = useState(false);
 
   if (!keywords || keywords.length === 0) return null;
 
   return (
-    <div className="rounded-2xl border border-amber-300/40 dark:border-amber-800/40 bg-amber-500/5 dark:bg-amber-950/20 overflow-hidden">
+    <div className="rounded-2xl border border-amber-300/40 dark:border-amber-800/40 bg-amber-500/5 dark:bg-amber-950/20 overflow-hidden transition-all">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-4 flex items-center justify-between text-left hover:bg-amber-500/10 transition"
+        className="w-full p-4 flex items-center justify-between text-left hover:bg-amber-500/10 transition cursor-pointer select-none"
+        aria-expanded={isOpen}
       >
         <div className="flex items-center gap-2">
-          <BookMarked className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          <BookMarked className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
           <span className="font-bold text-sm text-stone-900 dark:text-stone-100">
             原文與神學聚焦（Greek & Context Insights）
           </span>
+          <span className="hidden sm:inline-block text-[11px] text-stone-500 dark:text-stone-400 bg-amber-100/60 dark:bg-amber-950/50 px-2 py-0.5 rounded-full">
+            {keywords.length} 個字詞
+          </span>
         </div>
-        <ChevronDown
-          className={`w-4 h-4 text-stone-500 transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
+
+        <div className="flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
+          <span className="text-[11px]">{isOpen ? "點擊收合" : "點擊展開"}</span>
+          <ChevronDown
+            className={`w-4 h-4 text-stone-500 transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </div>
       </button>
 
       {isOpen && (
-        <div className="px-4 pb-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-1">
+        <div className="px-4 pb-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-1 animate-fadeIn">
           {keywords.map((kw, idx) => (
             <div
               key={idx}
