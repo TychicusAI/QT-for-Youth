@@ -10,7 +10,8 @@ import {
   Quote,
   Clock,
   Share2,
-  CheckCircle2
+  CheckCircle2,
+  Sparkles
 } from "lucide-react";
 import { DevotionalDay, DevotionalWeek } from "@/types/devotional";
 import { GreekKeywordsSection } from "@/components/GreekKeywordsSection";
@@ -162,7 +163,20 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
         </div>
       </section>
 
-      {/* 4. Journal Reflection Box */}
+      {/* 4. Meditation Question Card */}
+      {day.meditationQuestion && (
+        <section className="rounded-2xl p-5 sm:p-6 bg-amber-500/10 dark:bg-amber-950/30 border border-amber-300/60 dark:border-amber-700/60 space-y-2">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+            <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+            <span>今日默想問題（心靈反思）</span>
+          </div>
+          <p className="text-sm font-medium text-stone-800 dark:text-stone-100 leading-relaxed italic">
+            「{day.meditationQuestion}」
+          </p>
+        </section>
+      )}
+
+      {/* 5. Journal Reflection Box */}
       <JournalBox key={`${week.id}-${day.id}`} weekId={week.id} dayId={day.id} dayTitle={day.title} />
 
       {/* 5. Suggested Prayer Section */}

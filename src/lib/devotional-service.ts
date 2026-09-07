@@ -1,7 +1,7 @@
 import { DevotionalDay, DevotionalWeek } from "@/types/devotional";
 import { week_2026_09_07 } from "@/data/weeks/2026-09-07";
 
-// All available weekly devotionals list (new weeks will be registered here)
+// All available weekly devotionals list (sorted by latest week first)
 export const allWeeks: DevotionalWeek[] = [week_2026_09_07];
 
 export function getCurrentWeek(): DevotionalWeek {
@@ -60,7 +60,6 @@ export function formatWeekDateRange(week: DevotionalWeek): string {
  */
 export function getRecommendedDayIdForToday(): string {
   if (typeof window === "undefined") {
-    // Default server render fallback
     return "mon";
   }
   const dayOfWeek = new Date().getDay();
@@ -79,7 +78,6 @@ export function getRecommendedDayIdForToday(): string {
       return "sat";
     case 0:
     default:
-      // Sunday - recommend Saturday recap or Monday
       return "mon";
   }
 }

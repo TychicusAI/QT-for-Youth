@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sync": "node scripts/sync-markdown.mjs",
+    "prebuild": "node scripts/sync-markdown.mjs",
+    "predev": "node scripts/sync-markdown.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

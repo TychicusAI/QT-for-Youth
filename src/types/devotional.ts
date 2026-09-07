@@ -26,6 +26,7 @@ export interface DevotionalDay {
   keywords?: GreekKeyword[];
   suggestedPrayer: string;
   extendedStudy: ExtendedStudyItem[];
+  meditationQuestion?: string;
 }
 
 export interface DevotionalWeek {
