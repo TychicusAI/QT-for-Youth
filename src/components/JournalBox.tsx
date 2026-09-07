@@ -7,10 +7,10 @@ import { getJournalNote, saveJournalNote } from "@/lib/storage";
 interface JournalBoxProps {
   weekId: string;
   dayId: string;
-  dayTitle: string;
+  dayTitle?: string;
 }
 
-export function JournalBox({ weekId, dayId, dayTitle }: JournalBoxProps) {
+export function JournalBox({ weekId, dayId }: JournalBoxProps) {
   const [note, setNote] = useState(() => getJournalNote(weekId, dayId));
   const [savedStatus, setSavedStatus] = useState(false);
 
@@ -27,11 +27,9 @@ export function JournalBox({ weekId, dayId, dayTitle }: JournalBoxProps) {
     <div className="rounded-2xl p-5 sm:p-6 bg-amber-500/5 dark:bg-stone-900/60 border border-amber-300/40 dark:border-stone-800 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
-            <PenLine className="w-4 h-4" />
-          </div>
+          <PenLine className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
           <h4 className="font-bold text-sm text-stone-900 dark:text-stone-100">
-            我的靈修筆記本（{dayTitle}）
+            我的靈修筆記本
           </h4>
         </div>
 
