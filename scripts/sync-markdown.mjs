@@ -191,8 +191,8 @@ function parseMarkdown(content, fileId) {
   };
 }
 
-// Find all markdown files in src/data or data
-const candidateDirs = [path.join(process.cwd(), "src", "data"), path.join(process.cwd(), "data")];
+// Find all markdown files in data (primary) or src/data (fallback)
+const candidateDirs = [path.join(process.cwd(), "data"), path.join(process.cwd(), "src", "data")];
 
 const weeksOutputDir = path.join(process.cwd(), "src", "data", "weeks");
 if (!fs.existsSync(weeksOutputDir)) {

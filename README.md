@@ -41,45 +41,40 @@ npm run start
 
 ## 📖 如何每週新增靈修教材？
 
-每週新增教材非常簡單，只需兩步：
+每週新增教材極其簡單，**完全不需要寫任何程式碼**：
 
-### 步驟 1：建立新的週次檔案
-在 `src/data/weeks/` 目錄下建立新檔案，例如 `week-02.ts`（可複製 `week-01.ts` 作為範本）：
+### 只要一步：放入 Markdown 檔案
+在專案根目錄的 `data/` 資料夾下，新增以當週週一日期命名的 Markdown 檔案（例如 `data/2026-09-14.md`）。
 
-```ts
-import { DevotionalWeek } from "@/types/devotional";
+系統在 `npm run dev` 或 `npm run build`（包括 Vercel 部署）時，會**全自動解析該 Markdown 檔案，自動生成型別定義與靜態頁面**，並自動推算日期區間（如 `2026.09.14 - 09.19`）！
 
-export const week02: DevotionalWeek = {
-  id: "week-02",
-  weekNumber: 2,
-  dateRange: "2026 第 37 週",
-  title: "本週主題名稱",
-  book: "經卷範圍 (如：歌羅西書 1:1-14)",
-  subtitle: "六日深度研經靈修手冊",
-  goldenVerse: {
-    text: "核心金句文字",
-    reference: "經文出處"
-  },
-  foreword: "本週主題導言與前言...",
-  publishedAt: "2026-09-13",
-  isCurrentWeek: true, // 設為 true 成為首頁當前主打
-  days: [
-    // 週一到週六的 6 篇靈修內容（包含 title, scriptureRef, scriptureText, message, suggestedPrayer, keywords, extendedStudy 等）
-  ]
-};
+您也可以手動執行一次同步檢查：
+```bash
+npm run sync
 ```
 
-### 步驟 2：註冊新週次
-在 `src/lib/devotional-service.ts` 中將新週次加入清單：
+---
 
-```ts
-import { week01 } from "@/data/weeks/week-01";
-import { week02 } from "@/data/weeks/week-02"; // 匯入新的一週
+## 📂 專案目錄結構說明
 
-export const allWeeks: DevotionalWeek[] = [week02, week01];
 ```
-
-網站便會自動更新首頁焦點、歷史歸檔與所有 6 日靜態靈修頁面！
+QT-for-Youth/
+├── data/                         # 原始每週靈修 Markdown 材料（如 2026-09-07.md）
+├── scripts/                      # 自動化腳本（如 sync-markdown.mjs 自動轉換教材）
+├── public/                       # 靜態公開資源
+├── src/
+│   ├── app/                      # Next.js App Router 路由與頁面
+│   │   ├── devotional/[weekId]/[dayId]/ # 每日靈修閱讀頁面（SSG 靜態預渲染）
+│   │   ├── globals.css           # 全域樣式與色調設定
+│   │   ├── layout.tsx            # 根版面配置
+│   │   └── page.tsx              # 首頁入口
+│   ├── components/               # 互動式 UI 組件（卡片、計時器、金句分享等）
+│   ├── data/weeks/               # 自動由 data/*.md 生成的週次 TypeScript 資料
+│   ├── lib/                      # 核心工具函式（儲存、週次服務）
+│   └── types/                    # TypeScript 型別定義
+├── next.config.ts                # Next.js 設定
+└── package.json                  # 套件依賴與腳本
+```
 
 ---
 
