@@ -61,7 +61,7 @@ function parseMarkdown(content, fileId) {
     const theme = themeMatch ? themeMatch[1].trim() : `${dayLabel} 靈修`;
 
     // Scripture version & text & ref
-    let scriptureVersion = "和合本";
+    let scriptureVersion = "";
     const versionMatch = dayBody.match(/###\s*【經文】[（(]([^）)]+)[）)]/);
     if (versionMatch) {
       scriptureVersion = versionMatch[1].trim();

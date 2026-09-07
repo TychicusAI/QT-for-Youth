@@ -76,7 +76,7 @@ export function TodayHeroCard({ week, recommendedDayId }: TodayHeroCardProps) {
       <div className="relative z-10 grid md:grid-cols-12 gap-6 items-center">
         <div className="md:col-span-8 space-y-3">
           <div className="inline-block text-xs font-semibold tracking-wider text-amber-700 dark:text-amber-400 bg-amber-100/80 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-md border border-amber-200 dark:border-amber-800/80">
-            {currentDay.scriptureRef}（{currentDay.scriptureVersion}）
+            {currentDay.scriptureRef}{currentDay.scriptureVersion && currentDay.scriptureVersion !== "和合本" ? `（${currentDay.scriptureVersion}）` : ""}
           </div>
 
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tight leading-snug">

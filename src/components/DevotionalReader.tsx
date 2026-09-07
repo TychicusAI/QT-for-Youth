@@ -103,7 +103,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
             {day.dayLabel} 靈修
           </span>
           <span className="text-xs font-semibold text-amber-700 dark:text-amber-400 bg-amber-100/70 dark:bg-amber-950/60 px-2.5 py-1 rounded-md border border-amber-200 dark:border-amber-800">
-            {day.scriptureRef}（{day.scriptureVersion}）
+            {day.scriptureRef}{day.scriptureVersion && day.scriptureVersion !== "和合本" ? `（${day.scriptureVersion}）` : ""}
           </span>
           <span className="text-xs text-stone-500 dark:text-stone-400 flex items-center gap-1">
             <Clock className="w-3.5 h-3.5" />

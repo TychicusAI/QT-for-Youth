@@ -18,7 +18,7 @@ export interface DevotionalDay {
   title: string; // Short title
   subtitle?: string; // Subtitle theme
   scriptureRef: string; // e.g. '哥林多後書 1:1-2'
-  scriptureVersion: string; // e.g. '和合本'
+  scriptureVersion?: string; // e.g. '現代中文譯本'
   scriptureText: string;
   goldenVerse: string;
   readTimeMinutes: number;
