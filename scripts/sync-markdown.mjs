@@ -11,6 +11,36 @@ const DAY_MAP = {
   週日: { id: "sun", dayNumber: 7 },
 };
 
+const BIBLE_BOOK_MAP = {
+  創世記: "Gen", 出埃及記: "Exod", 利未記: "Lev", 民數記: "Num", 申命記: "Deut",
+  約書亞記: "Josh", 士師記: "Judg", 路得記: "Ruth", 撒母耳記上: "1Sam", 撒母耳記下: "2Sam",
+  列王紀上: "1Kgs", 列王紀下: "2Kgs", 歷代志上: "1Chr", 歷代志下: "2Chr", 以斯拉記: "Ezra",
+  尼希米記: "Neh", 以斯帖記: "Esth", 約伯記: "Job", 詩篇: "Ps", 箴言: "Prov",
+  傳道書: "Eccl", 雅歌: "Song", 以賽亞書: "Isa", 耶利米書: "Jer", 耶利米哀歌: "Lam",
+  以西結書: "Ezek", 但以理書: "Dan", 何西阿書: "Hos", 約珥書: "Joel", 阿摩司書: "Amos",
+  俄巴底亞書: "Obad", 約拿書: "Jonah", 彌迦書: "Mic", 那鴻書: "Nah", 哈巴谷書: "Hab",
+  西番雅書: "Zeph", 哈該書: "Hag", 撒迦利亞書: "Zech", 瑪拉基書: "Mal",
+  馬太福音: "Matt", 馬可福音: "Mark", 路加福音: "Luke", 約翰福音: "John", 使徒行傳: "Acts",
+  羅馬書: "Rom", 哥林多前書: "1Cor", 哥林多後書: "2Cor", 加拉太書: "Gal", 以弗所書: "Eph",
+  腓立比書: "Phil", 歌羅西書: "Col", 帖撒羅尼迦前書: "1Thess", 帖撒羅尼迦後書: "2Thess",
+  提摩太前書: "1Tim", 提摩太後書: "2Tim", 提多書: "Titus", 腓利門書: "Phlm", 希伯來書: "Heb",
+  雅各書: "Jas", 彼得前書: "1Pet", 彼得後書: "2Pet", 約翰一書: "1John", 約翰二書: "2John",
+  約翰三書: "3John", 猶大書: "Jude", 啟示錄: "Rev"
+};
+
+function getBibliaUrl(ref) {
+  if (!ref) return "";
+  const match = ref.match(/^([\u4e00-\u9fa5]+)\s*(\d+)(?:[:：](\d+(?:-\d+)?))?/);
+  if (!match) return "";
+  const bookName = match[1];
+  const chapter = match[2];
+  const verse = match[3];
+  const bookCode = BIBLE_BOOK_MAP[bookName];
+  if (!bookCode) return "";
+  const passage = verse ? `${bookCode}${chapter}.${verse}` : `${bookCode}${chapter}`;
+  return `https://biblia.com/books/hlybbltrdshndtn/${passage}`;
+}
+
 function parseMarkdown(content, fileId) {
   const lines = content.split("\n");
 
@@ -106,11 +136,17 @@ function parseMarkdown(content, fileId) {
           if (currentItem && currentItem.title) {
             extendedStudy.push(currentItem);
           }
+          const ref = itemHeaderMatch[1].trim();
           currentItem = {
-            title: itemHeaderMatch[1].trim(),
-            reference: itemHeaderMatch[1].trim(),
+            title: ref,
+            reference: ref,
+            text: "",
             question: itemHeaderMatch[2] ? itemHeaderMatch[2].trim() : "",
+            bibliaUrl: getBibliaUrl(ref),
           };
+        } else if (el.trim().startsWith(">") && currentItem) {
+          const scriptureQuote = el.trim().replace(/^>\s*/, "").replace(/^[「"“]|["”」]$/g, "").trim();
+          currentItem.text = currentItem.text ? `${currentItem.text} ${scriptureQuote}` : scriptureQuote;
         } else if (el.trim().startsWith("*") && currentItem) {
           const content = el.trim().replace(/^\*+|\*+$/g, "").trim();
           currentItem.question = currentItem.question ? `${currentItem.question} ${content}` : content;

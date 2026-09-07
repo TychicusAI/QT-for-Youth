@@ -9,6 +9,8 @@ export interface ExtendedStudyItem {
   title: string;
   reference: string;
   question: string;
+  text?: string; // 新標點和合本經文內容
+  bibliaUrl?: string; // Biblia.com 查經外部連結
 }
 
 export interface DevotionalDay {

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { DevotionalDay, DevotionalWeek } from "@/types/devotional";
 import { GreekKeywordsSection } from "@/components/GreekKeywordsSection";
+import { ExtendedStudySection } from "@/components/ExtendedStudySection";
 import { JournalBox } from "@/components/JournalBox";
 import { PrayerAmenButton } from "@/components/PrayerAmenButton";
 import { VerseShareModal } from "@/components/VerseShareModal";
@@ -195,26 +196,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
 
       {/* 6. Extended Study */}
       {day.extendedStudy && day.extendedStudy.length > 0 && (
-        <section className="p-6 rounded-2xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 space-y-3">
-          <h4 className="font-bold text-sm text-stone-900 dark:text-stone-100 flex items-center gap-2">
-            <span>延伸研讀</span>
-          </h4>
-          <div className="space-y-2.5">
-            {day.extendedStudy.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-3 rounded-xl bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-xs space-y-1"
-              >
-                <div className="font-semibold text-amber-600 dark:text-amber-400">
-                  <span>{item.title}</span>
-                </div>
-                <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
-                  {item.question}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ExtendedStudySection items={day.extendedStudy} />
       )}
 
       {/* Bottom Navigation: Prev / Next Day */}
