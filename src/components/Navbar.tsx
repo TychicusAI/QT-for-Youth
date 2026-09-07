@@ -41,8 +41,8 @@ export function Navbar({ onOpenVerseModal, onOpenTimerModal }: NavbarProps) {
                 青年靈修
               </span>
             </div>
-            <p className="text-xs text-stone-500 dark:text-stone-400 truncate max-w-[180px] sm:max-w-none">
-              每週深研・在日常中遇見復活的大能
+            <p className="text-xs text-stone-500 dark:text-stone-400 truncate max-w-[210px] sm:max-w-none">
+              根據<strong className="font-bold text-stone-700 dark:text-stone-200">板新信友堂</strong>的經課編排
             </p>
           </div>
         </Link>

@@ -138,7 +138,7 @@ export function HomeContainer() {
           </div>
 
           <div className="text-center sm:text-right">
-            <span>由 TychicusAI 青年事工推動</span>
+            <span>由 Tychicus AI 事工推動</span>
             <span className="mx-2">•</span>
             <span>每週定時更新當週教材</span>
           </div>
