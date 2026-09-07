@@ -197,7 +197,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
       {day.extendedStudy && day.extendedStudy.length > 0 && (
         <section className="p-6 rounded-2xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 space-y-3">
           <h4 className="font-bold text-sm text-stone-900 dark:text-stone-100 flex items-center gap-2">
-            <span>延伸研讀與課後思考</span>
+            <span>延伸研讀</span>
           </h4>
           <div className="space-y-2.5">
             {day.extendedStudy.map((item, idx) => (
@@ -205,9 +205,8 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
                 key={idx}
                 className="p-3 rounded-xl bg-white dark:bg-stone-950 border border-stone-200 dark:border-stone-800 text-xs space-y-1"
               >
-                <div className="font-semibold text-amber-600 dark:text-amber-400 flex items-center justify-between">
+                <div className="font-semibold text-amber-600 dark:text-amber-400">
                   <span>{item.title}</span>
-                  <span className="text-stone-500 font-mono">{item.reference}</span>
                 </div>
                 <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
                   {item.question}
