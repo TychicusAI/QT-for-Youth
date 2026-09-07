@@ -129,7 +129,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
           <span>今日經文</span>
         </div>
         <blockquote className="text-lg sm:text-xl font-serif text-stone-800 dark:text-stone-100 leading-relaxed font-semibold">
-          {day.scriptureText}
+          {day.scriptureText.replace(/^[「"“]|["”」]$/g, "")}
         </blockquote>
       </section>
 
@@ -142,7 +142,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
       <section className="space-y-6">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
           <Quote className="w-4 h-4 rotate-180" />
-          <span>深度信息默想</span>
+          <span>今日信息</span>
         </div>
 
         <div className={`prose prose-stone dark:prose-invert max-w-none text-stone-800 dark:text-stone-200 ${fontClasses} space-y-5`}>
@@ -168,10 +168,10 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
         <section className="rounded-2xl p-5 sm:p-6 bg-amber-500/10 dark:bg-amber-950/30 border border-amber-300/60 dark:border-amber-700/60 space-y-2">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
             <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span>今日默想問題（心靈反思）</span>
+            <span>默想反思</span>
           </div>
-          <p className="text-sm font-medium text-stone-800 dark:text-stone-100 leading-relaxed italic">
-            「{day.meditationQuestion}」
+          <p className="text-sm font-medium text-stone-800 dark:text-stone-100 leading-relaxed">
+            {day.meditationQuestion.replace(/^[「"“]|["”」]$/g, "")}
           </p>
         </section>
       )}
@@ -182,10 +182,10 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
       {/* 5. Suggested Prayer Section */}
       <section className="rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-amber-500/10 via-orange-500/5 to-amber-100/20 dark:from-slate-900 dark:via-stone-900 dark:to-slate-950 border border-amber-300/60 dark:border-amber-800/60 space-y-4">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
-          <span>建議禱告回應</span>
+          <span>建議禱告</span>
         </div>
 
-        <div className="font-serif italic text-stone-800 dark:text-stone-200 text-sm sm:text-base leading-relaxed whitespace-pre-line space-y-3 bg-white/60 dark:bg-stone-950/40 p-5 rounded-2xl border border-amber-200/50 dark:border-stone-800">
+        <div className="font-serif text-stone-800 dark:text-stone-200 text-sm sm:text-base leading-relaxed whitespace-pre-line space-y-3 bg-white/60 dark:bg-stone-950/40 p-5 rounded-2xl border border-amber-200/50 dark:border-stone-800">
           {day.suggestedPrayer}
         </div>
 

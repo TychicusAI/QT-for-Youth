@@ -24,7 +24,7 @@ export function GreekKeywordsSection({ keywords }: GreekKeywordsSectionProps) {
         <div className="flex items-center gap-2">
           <BookMarked className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
           <span className="font-bold text-sm text-stone-900 dark:text-stone-100">
-            原文與神學聚焦（Greek & Context Insights）
+            原文與神學聚焦
           </span>
           <span className="hidden sm:inline-block text-[11px] text-stone-500 dark:text-stone-400 bg-amber-100/60 dark:bg-amber-950/50 px-2 py-0.5 rounded-full">
             {keywords.length} 個字詞

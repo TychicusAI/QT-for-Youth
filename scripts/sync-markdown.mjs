@@ -72,15 +72,12 @@ function parseMarkdown(content, fileId) {
     const scriptureBlockMatch = dayBody.match(/###\s*【經文】[^\n]*\n+([\s\S]*?)(?=###|$)/);
     if (scriptureBlockMatch) {
       const block = scriptureBlockMatch[1].trim();
-      const quoteMatch = block.match(/>\s*([「"“][\s\S]*?[」"”])(?:\s*[（(]([^）)]+)[）)])?/);
-      if (quoteMatch) {
-        scriptureText = quoteMatch[1].trim();
-        if (quoteMatch[2]) {
-          scriptureRef = quoteMatch[2].trim();
-        }
-      } else {
-        scriptureText = block.replace(/^>\s*/gm, "").trim();
+      const refMatch = block.match(/[（(]([^）)]+)[）)]\s*$/);
+      if (refMatch) {
+        scriptureRef = refMatch[1].trim();
       }
+      const cleanBlock = block.replace(/[（(][^）)]+[）)]\s*$/, "").replace(/^>\s*/gm, "").trim();
+      scriptureText = cleanBlock.replace(/^[「"“]|["”」]$/g, "").trim();
     }
 
     // Message
