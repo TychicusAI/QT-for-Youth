@@ -211,7 +211,6 @@ function parseMarkdown(content, fileId) {
     startDate: fileId,
     title,
     book,
-    subtitle: "六日深度研經靈修手冊",
     goldenVerse: {
       text: defaultGoldenVerse,
       reference: defaultGoldenRef,

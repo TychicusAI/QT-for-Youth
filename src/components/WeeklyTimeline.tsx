@@ -37,16 +37,11 @@ export function WeeklyTimeline({ week, recommendedDayId }: WeeklyTimelineProps) 
       {/* Weekly Header & Progress Info */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-stone-200 dark:border-stone-800">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-amber-600 dark:text-amber-400 mb-1">
-            <span>週次特輯研經手冊</span>
-            <span>•</span>
+          <div className="text-xs font-bold tracking-wider uppercase text-amber-600 dark:text-amber-400 mb-1">
             <span>{week.book}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100 flex items-center gap-3">
-            <span>{week.title}</span>
-            <span className="text-sm font-normal text-stone-500 dark:text-stone-400">
-              {week.subtitle}
-            </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100">
+            {week.title}
           </h2>
         </div>
 
@@ -57,7 +52,7 @@ export function WeeklyTimeline({ week, recommendedDayId }: WeeklyTimelineProps) 
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition"
           >
             <Info className="w-3.5 h-3.5 text-amber-500" />
-            <span>本週導言簡介</span>
+            <span>前言</span>
           </button>
 
           <div className="flex items-center gap-3 bg-stone-100 dark:bg-stone-800/60 px-3.5 py-1.5 rounded-full border border-stone-200 dark:border-stone-800">
@@ -79,7 +74,7 @@ export function WeeklyTimeline({ week, recommendedDayId }: WeeklyTimelineProps) 
         <div className="p-5 rounded-2xl bg-amber-500/5 dark:bg-amber-950/20 border border-amber-300/30 dark:border-amber-700/30 text-stone-700 dark:text-stone-300 text-sm leading-relaxed space-y-2">
           <div className="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
-            <span>前言：死地中的凱歌</span>
+            <span>前言</span>
           </div>
           <p className="whitespace-pre-line text-stone-700 dark:text-stone-300 font-sans">
             {week.foreword}
