@@ -129,7 +129,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
           <BookOpen className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
           <span className="font-bold text-sm text-stone-900 dark:text-stone-100">今日經文</span>
         </div>
-        <blockquote className="text-lg sm:text-xl font-serif text-stone-800 dark:text-stone-100 leading-relaxed font-semibold">
+        <blockquote className="text-lg sm:text-xl font-serif text-black dark:text-stone-100 leading-relaxed font-semibold">
           {day.scriptureText.replace(/^[「"“]|["”」]$/g, "")}
         </blockquote>
       </section>
@@ -141,18 +141,18 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
           <span className="font-bold text-sm text-stone-900 dark:text-stone-100">今日信息</span>
         </div>
 
-        <div className={`prose prose-stone dark:prose-invert max-w-none text-stone-800 dark:text-stone-200 ${fontClasses} space-y-5`}>
+        <div className={`max-w-none text-black dark:text-stone-100 ${fontClasses} space-y-5`}>
           {day.message.split("\n\n").map((paragraph, idx) => {
             // Render bolding and emphasis cleanly
             const rendered = paragraph
-              .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-stone-950 dark:text-white">$1</strong>')
+              .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-black dark:text-white">$1</strong>')
               .replace(/\*(.*?)\*/g, '<em class="italic text-amber-700 dark:text-amber-300">$1</em>');
 
             return (
               <p
                 key={idx}
                 dangerouslySetInnerHTML={{ __html: rendered }}
-                className="leading-relaxed"
+                className="leading-relaxed text-black dark:text-stone-100"
               />
             );
           })}
