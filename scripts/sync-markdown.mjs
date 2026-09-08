@@ -164,23 +164,6 @@ function parseMarkdown(content, fileId) {
       meditationQuestion = medMatch[1].trim().replace(/^[「"“]|["”」]$/g, "");
     }
 
-    // Keywords extraction
-    const keywords = [];
-    const keywordMatches = message.matchAll(/([^\s，。、「」]+)（([A-Za-z\s'’ēōē-]+)(?:，([^）]+))?）/g);
-    const seen = new Set();
-    for (const km of keywordMatches) {
-      const word = km[2]?.trim();
-      if (word && !seen.has(word) && word.length > 2 && seen.size < 4) {
-        seen.add(word);
-        keywords.push({
-          word,
-          transliteration: km[1]?.trim() || "",
-          meaning: km[3]?.trim() || km[1]?.trim() || "",
-          explanation: `經文關鍵詞：${km[1]?.trim()}`,
-        });
-      }
-    }
-
     const cleanQuote = scriptureText.replace(/^[「"“]|["”」]$/g, "");
     const goldenVerse = cleanQuote.length > 90 ? `${cleanQuote.slice(0, 90)}...` : cleanQuote;
 
@@ -195,7 +178,6 @@ function parseMarkdown(content, fileId) {
       goldenVerse,
       readTimeMinutes: Math.max(5, Math.ceil(message.length / 280)),
       message,
-      keywords,
       suggestedPrayer,
       extendedStudy,
       meditationQuestion,

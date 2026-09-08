@@ -15,7 +15,6 @@ import {
   HandHeart
 } from "lucide-react";
 import { DevotionalDay, DevotionalWeek } from "@/types/devotional";
-import { GreekKeywordsSection } from "@/components/GreekKeywordsSection";
 import { ExtendedStudySection } from "@/components/ExtendedStudySection";
 import { JournalBox } from "@/components/JournalBox";
 import { PrayerAmenButton } from "@/components/PrayerAmenButton";
@@ -135,12 +134,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
         </blockquote>
       </section>
 
-      {/* 2. Greek Keyword Accordion */}
-      {day.keywords && day.keywords.length > 0 && (
-        <GreekKeywordsSection keywords={day.keywords} />
-      )}
-
-      {/* 3. Deep Devotional Message */}
+      {/* 2. Deep Devotional Message */}
       <section className="space-y-6">
         <div className="flex items-center gap-2">
           <Quote className="w-4 h-4 rotate-180 text-amber-600 dark:text-amber-400 shrink-0" />

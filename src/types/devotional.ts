@@ -1,10 +1,3 @@
-export interface GreekKeyword {
-  word: string;
-  transliteration: string;
-  meaning: string;
-  explanation: string;
-}
-
 export interface ExtendedStudyItem {
   title: string;
   reference: string;
@@ -25,7 +18,6 @@ export interface DevotionalDay {
   goldenVerse: string;
   readTimeMinutes: number;
   message: string; // Full message content with markdown formatting
-  keywords?: GreekKeyword[];
   suggestedPrayer: string;
   extendedStudy: ExtendedStudyItem[];
   meditationQuestion?: string;
