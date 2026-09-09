@@ -146,7 +146,7 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
             // Render bolding and emphasis cleanly
             const rendered = paragraph
               .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-black dark:text-white">$1</strong>')
-              .replace(/\*(.*?)\*/g, '<em class="italic text-amber-700 dark:text-amber-300">$1</em>');
+              .replace(/\*(.*?)\*/g, '<em class="italic text-black dark:text-stone-100">$1</em>');
 
             return (
               <p
