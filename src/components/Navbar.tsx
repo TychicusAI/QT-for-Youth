@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { BookOpen, Flame, Sparkles, Moon, Sun, Clock } from "lucide-react";
+import { BookOpen, Flame, Sparkles, Clock } from "lucide-react";
 import { useStreak } from "@/lib/storage";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface NavbarProps {
   onOpenVerseModal?: () => void;
@@ -12,17 +13,6 @@ interface NavbarProps {
 
 export function Navbar({ onOpenVerseModal, onOpenTimerModal }: NavbarProps) {
   const streak = useStreak();
-  const [isDark, setIsDark] = useState<boolean>(false);
-
-  const toggleDarkMode = () => {
-    const nextState = !isDark;
-    setIsDark(nextState);
-    if (nextState) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-amber-50/80 dark:bg-slate-950/80 border-b border-amber-200/50 dark:border-slate-800 transition-colors duration-200">
@@ -81,13 +71,7 @@ export function Navbar({ onOpenVerseModal, onOpenTimerModal }: NavbarProps) {
           )}
 
           {/* Dark mode toggle */}
-          <button
-            onClick={toggleDarkMode}
-            aria-label="切換深淺模式"
-            className="p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-200/60 dark:hover:bg-stone-800 transition"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
-          </button>
+          <ThemeToggle />
         </div>
       </div>
     </header>

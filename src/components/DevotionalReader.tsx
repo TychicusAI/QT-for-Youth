@@ -19,6 +19,7 @@ import { ExtendedStudySection } from "@/components/ExtendedStudySection";
 import { JournalBox } from "@/components/JournalBox";
 import { PrayerAmenButton } from "@/components/PrayerAmenButton";
 import { VerseShareModal } from "@/components/VerseShareModal";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface DevotionalReaderProps {
   week: DevotionalWeek;
@@ -94,6 +95,11 @@ export function DevotionalReader({ week, day }: DevotionalReaderProps) {
             <Share2 className="w-3.5 h-3.5" />
             <span>分享金句</span>
           </button>
+
+          <ThemeToggle
+            iconSize="sm"
+            className="p-1.5 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-200/70 dark:hover:bg-stone-800 transition cursor-pointer"
+          />
         </div>
       </div>
 
